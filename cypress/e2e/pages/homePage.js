@@ -17,4 +17,3 @@ class Homepage {
 }
 
 export default Homepage;
-// module.exports = Homepage;
