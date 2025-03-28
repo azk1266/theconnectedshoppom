@@ -13,4 +13,15 @@ describe('checkHomePage', () => {
     homePage.verifyTitle();
     homePage.getBody();
   });
+  it('Header logo check', () => {
+    header.getLogo();
+    header.getLogoPrimary();
+    header.getLogoTransparent();
+  });
+  it('Horizontal mini menu check', () => {
+    header.checkHorizontalMiniMenu();
+    header.checkClickableSearch();
+    header.checkClickableAccount();
+    header.checkClickableCart();
+  });
 });

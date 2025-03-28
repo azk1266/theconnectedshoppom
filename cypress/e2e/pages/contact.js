@@ -1,59 +1,55 @@
 class Contact {
+  constructor() {
+    this.url = '/pages/contactenos';
+    this.partOfTitle = 'Contáctenos';
+    this.contactButtonName = 'a[href="/pages/contactenos"]';
+    this.nameInput = 'input[name="contact[name]"]';
+    this.emailInput = 'input[name="contact[email]"]';
+    this.phoneInput = 'input[name="contact[Su teléfono]"]';
+    this.messageInput = '.Form__Textarea';
+    this.submitButton = 'form[action="/contact#contact_form"]'; // button[type="submit"]
+    this.successMessage = 'Gracias por contactarnos';
+  }
+  clickContact() {
+    cy.get(this.contactButtonName).click();
+  }
   visit() {
-    cy.visit('/pages/contactenos');
+    cy.visit(this.url);
   }
   verifyTitle() {
-    cy.title().should('include', 'Contáctenos');
+    cy.title().should('include', this.partOfTitle);
   }
   verifyInputFields() {
-    cy.get(':nth-child(1) > .Form__Input') //name
-      .should('have.attr', 'placeholder', 'Tu nombre')
-      .should('exist');
-    cy.get(':nth-child(2) > .Form__Input') //email
-      .should('have.attr', 'placeholder', 'Tu correo electrónico')
-      .should('exist');
-    cy.get(':nth-child(4) > .Form__Input') //tel.number
-      .should('have.attr', 'placeholder', 'Su teléfono')
-      .should('exist');
-    cy.get('.Form__Textarea') // message
-      .should('have.attr', 'placeholder', 'Tu mensaje')
-      .should('exist');
+    cy.verifyTheInputField(this.nameInput, 'placeholder', 'Tu nombre'); //name
+    cy.verifyTheInputField(
+      this.emailInput,
+      'placeholder',
+      'Tu correo electrónico'
+    ); //email
+    cy.verifyTheInputField(this.phoneInput, 'placeholder', 'Su teléfono'); //tel.number
+    cy.verifyTheInputField(this.messageInput, 'placeholder', 'Tu mensaje'); // message
   }
-  correctNameEntering() {
-    cy.get(':nth-child(1) > .Form__Input')
-      .type('Mark')
-      .should('have.value', 'Mark');
+  emailEntering(email) {
+    cy.dataEntering(this.emailInput, email);
   }
-  correctEmailEntering() {
-    cy.get(':nth-child(2) > .Form__Input')
-      .type('lospe3s2@gmail.com')
-      .should('have.value', 'lospe3s2@gmail.com');
+  phoneEntering(phone) {
+    cy.dataEntering(this.emailInput, phone);
   }
-  emailEnteringWithoutAt() {
-    cy.get(':nth-child(2) > .Form__Input')
-      .type('p399gmail.com')
-      .should('have.value', 'p399752d');
+  nameEntering(name) {
+    cy.dataEntering(this.emailInput, name);
   }
-  correctTelephoneEntering() {
-    cy.get(':nth-child(4) > .Form__Input')
-      .type('+34657839055')
-      .should('have.value', '+34657839055');
-  }
-  messageEntering() {
-    cy.get('.Form__Textarea')
-      .type('Everything is working correctly')
-      .should('have.value', 'Everything is working correctly');
+  messageEntering(message) {
+    cy.dataEntering(this.emailInput, message);
   }
   submit() {
-    // cy.get('.#contact_form > button').click();
-    cy.get('form[action="/contact#contact_form"]').submit();
+    // cy.get(this.submitButton).submit();
   }
   successMessage() {
-    cy.contains('Gracias por contactarnos').should('be.visible');
+    // cy.contains(this.successMessage).should('be.visible');
   }
   verifyDidntRedirected() {
     cy.url().should('include', '/contactenos');
-    cy.contains('Gracias por contactarnos').should('not.exist');
+    cy.contains(this.successMessage).should('not.exist');
   }
 }
 

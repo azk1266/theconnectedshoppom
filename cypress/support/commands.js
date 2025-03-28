@@ -23,3 +23,10 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('verifyTheInputField', verifyTheInputField);
+Cypress.Commands.add('dataEntering', dataEntering);
+Cypress.Commands.add(
+  'getLogoPrimaryOrTransparent',
+  getLogoPrimaryOrTransparent
+);
