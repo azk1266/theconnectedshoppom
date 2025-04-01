@@ -23,6 +23,11 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import {
+  verifyTheInputField,
+  dataEntering,
+  getLogoPrimaryOrTransparent,
+} from '../e2e/pages/global_methods';
 
 Cypress.Commands.add('verifyTheInputField', verifyTheInputField);
 Cypress.Commands.add('dataEntering', dataEntering);

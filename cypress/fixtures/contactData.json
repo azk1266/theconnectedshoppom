@@ -1,0 +1,17 @@
+{
+  "valid": {
+    "email": "mark333@gmail.com",
+    "name": "Mark",
+    "phone": "+34956304648",
+    "message": "I have problem with my order №20853020020"
+  },
+  "invalid": {
+    "email": "mark333gmail.com"
+  },
+  "empty": {
+    "email": "",
+    "name": "",
+    "phone": "",
+    "message": ""
+  }
+}

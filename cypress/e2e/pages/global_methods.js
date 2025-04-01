@@ -2,7 +2,7 @@ export const verifyTheInputField = (selector, attr, text) => {
   cy.get(selector).should('have.attr', attr, text).should('exist');
 };
 export const dataEntering = (selector, data) => {
-  cy.get(this.emailInput).type(data).should('have.value', data);
+  cy.get(selector).type(data).should('have.value', data);
 };
 export const getLogoPrimaryOrTransparent = (selector, src, width, height) => {
   cy.get(selector)
